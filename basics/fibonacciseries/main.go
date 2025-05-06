@@ -19,7 +19,7 @@ func main() {
 			fmt.Println("Fibonacci series: [0]")
 		default:
 			fmt.Print("Fibonacci series: [")
-			for i := 0; i < n; i++ {
+			for i := range n {
 				if i == n-1 {
 					fmt.Print(a)
 				} else {
