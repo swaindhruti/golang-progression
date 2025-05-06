@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"slices"
 )
 
 func main() {
@@ -37,21 +38,31 @@ func main() {
 	// Print the copied slice
 	fmt.Println("Copied Slice:", copiedSlice) // Print the copied slice
 
-	// Comparing slices (not directly possible in Go)
-	isEqual := true        // Initialize a boolean variable to true
-	for i := range slice { // Iterate over each element in the original slice
-		if slice[i] != copiedSlice[i] { // Compare elements at index i in both slices
-			isEqual = false // If any element is not equal, set isEqual to false
-			break           // Break out of the loop if not equal
-		}
+	if slices.Equal(slice, copiedSlice) { // Check if the two slices are equal
+		fmt.Println("Slices are equal") // Print if the slices are equal
+	} else {
+		fmt.Println("Slices are not equal") // Print if the slices are not equal
 	}
-	fmt.Println("Are slices equal?", isEqual) // Print whether slices are equal or not
 
 	// Using nil slices
 	var nilSlice []int      // Declare a nil slice (no memory allocated)
 	if len(nilSlice) == 0 { // Check if the nilSlice is empty (a better way to check)
 		fmt.Println("Nil Slice is empty")
 	}
+
+	// Creating a 2D slice (slice of slices)
+	// A 2D slice is a slice of slices, where each inner slice can have different lengths.
+	slice_2d := make([][]int, 3)
+	for i := range 3 { // Loop through the outer slice
+		innerlen := i + 1                   // Calculate the length of the inner slice
+		slice_2d[i] = make([]int, innerlen) // Create an inner slice with the calculated length
+		for j := range innerlen {           // Loop through the inner slice
+			slice_2d[i][j] = i + j // Assign a value to the inner slice
+		}
+	}
+
+	fmt.Println("2D Slice:", slice_2d) // Print the 2D slice
+
 }
 
 // Note: Slices are reference types, so when you pass a slice to a function, it passes a reference to the underlying array, not a copy of the array. This means that changes made to the slice inside the function will affect the original slice outside the function.
