@@ -28,6 +28,12 @@ func main() {
 	result3 := multiplierFunc(5)                     // Assigning the multiplier function to a variable
 	fmt.Println("Multiplying 5 by 2 gives", result3) // Calling the multiplier function with 5
 
+	coordnateX, coordinateY := getCoordinates()              // Calling a function that returns multiple values
+	fmt.Println("Coordinates are:", coordnateX, coordinateY) // Printing the coordinates returned by the function
+
+	result4Q, result4R := divide(10, 3) // Calling a function that returns multiple values with named return values
+	fmt.Println("Quotient :", result4Q, "Remainder :", result4R)
+
 }
 
 // Function to add two numbers
@@ -45,6 +51,18 @@ func makeMultiplier(factor int) func(int) int {
 	return func(x int) int {
 		return x * factor
 	}
+}
+
+// Function returnig multiple values
+func getCoordinates() (int, int) {
+	return 10, 20
+}
+
+// Function returning multiple values with named return values
+func divide(a, b int) (quotient int, remainder int) {
+	quotient = a / b
+	remainder = a % b
+	return
 }
 
 // Note: In Go, functions are first-class citizens, meaning they can be assigned to variables, passed as arguments, and returned from other functions. This allows for a high degree of flexibility and modularity in code design.
