@@ -24,7 +24,7 @@ func process(i int) { // The deferred function calls are executed in LIFO order 
 	defer fmt.Println("The value of i is: ", i)             // Executed 6th
 }
 
-// Note: The defered statement will be exectured immediately in the function but it will be executed at the end of the function execution.
+// Note: The defered statement will be executed immediately in the function but it will be executed at the end of the function execution.
 // Practical Use Cases: Resource Cleanup, Unlock Mutexes, Loging and Tracking
 // Best Practices: Keed defered actions short, Understand Evaluation Timings, Avoid Complex Control Flow
 // Commonly Used to ensure that resources like files or te DB connections are closed after they are opened.
